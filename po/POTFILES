@@ -1,0 +1,6 @@
+data/com.github.hezral.doomed.desktop.in
+data/com.github.hezral.doomed.appdata.xml.in
+data/com.github.hezral.doomed.gschema.xml
+src/main.py
+src/window.py
+

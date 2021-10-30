@@ -127,3 +127,13 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Flatpak
+.flatpak/
+.flatpak-builder/
+build-dir/
+
+# VSCode
+.vscode/
+
+.github/

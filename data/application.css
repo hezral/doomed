@@ -1,0 +1,43 @@
+/* 
+# application.css
+#
+# Copyright 2021 adi
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>. 
+*/
+
+.transparent {
+    background-color: transparent;
+}
+
+decoration {box-shadow: 0 0 0 0px rgba(0,0,0,0), 0 0px 0px  rgba(0,0,0,0), 0 0px 0px  rgba(0,0,0,0), 0 0px 16px  rgba(0,0,0,0);}
+decoration-overlay {box-shadow: 0 0 0 1px rgba(0,0,0,0), 0 13px 16px 4px rgba(0,0,0,0), 0 3px 4px rgba(0,0,0,0), 0 3px 3px -3px rgba(0,0,0,0);}
+
+.custom-decoration > decoration {box-shadow: 0 0 0 1px rgba(0,0,0,0.75), 0 13px 16px 4px rgba(0,0,0,0), 0 2px 4px 2px rgba(0,0,0,0.2), 0 15px 12px -10px rgba(0,0,0,0.5), 0 8px 14px 4px rgba(0,0,0,0.25);}
+.custom-decoration-overlay > decoration-overlay {box-shadow: 0 -1px rgba(255,255,255,0.04) inset, 0 1px rgba(255,255,255,0.06) inset, 1px 0 rgba(255,255,255,0.014) inset, -1px 0 rgba(255,255,255,0.014) inset;}
+.custom-decoration > decoration:backdrop {box-shadow: 0 0 0 1px rgba(0,0,0,0.75), 0 13px 16px 4px rgba(0,0,0,0), 0 3px 4px rgba(0,0,0,0.25), 0 3px 3px -3px rgba(0,0,0,0.45);}
+.custom-decoration-overlay > decoration-overlay:backdrop {box-shadow: 0 -1px rgba(255,255,255,0.04) inset, 0 1px rgba(255,255,255,0.06) inset, 1px 0 rgba(255,255,255,0.014) inset, -1px 0 rgba(255,255,255,0.14) inset;}
+
+.dropshadow {box-shadow: 0 0 0 1px rgba(0,0,0,0.75), 0 13px 16px 4px rgba(0,0,0,0), 0 2px 4px 2px rgba(0,0,0,0.2), 0 15px 12px -10px rgba(0,0,0,0.5), 0 8px 14px 4px rgba(0,0,0,0.25);}
+.dropshadow:backdrop {box-shadow: 0 0 0 1px rgba(0,0,0,0.75), 0 13px 16px 4px rgba(0,0,0,0), 0 3px 4px rgba(0,0,0,0.25), 0 3px 3px -3px rgba(0,0,0,0.45);}
+
+@keyframes crossfader {
+    0% { opacity: 0; } 
+    03.33% { opacity: 0; }
+    06.66% { opacity: 0; }
+    09.99% { opacity: 0; }
+    13.33% { opacity: 0; }
+    16.65% { opacity: 0.75; }
+    100% { opacity: 1; }	
+}
