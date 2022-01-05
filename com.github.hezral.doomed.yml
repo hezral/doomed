@@ -1,16 +1,12 @@
 app-id: com.github.hezral.doomed
-runtime: io.elementary.Sdk
+runtime: io.elementary.Platform
 runtime-version: '6'
 sdk: io.elementary.Sdk
 command: com.github.hezral.doomed
-appstream-compose: false
 finish-args:
   - --socket=wayland
   - --socket=fallback-x11
-  - --share=network
   - --socket=pulseaudio
-  # needed for perfers-color-scheme
-  - --system-talk-name=org.freedesktop.Accounts
   # access host /proc/stat file
   - --filesystem=/proc/stat:ro
   - --talk-name=org.freedesktop.Flatpak

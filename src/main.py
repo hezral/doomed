@@ -28,7 +28,7 @@ class Application(Gtk.Application):
         super().__init__(application_id=self.app_id,
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
 
-        # self.gio_settings = Gio.Settings(schema_id=self.app_id)
+        self.gio_settings = Gio.Settings(schema_id=self.app_id)
         self.gtk_settings = Gtk.Settings().get_default()
         self.granite_settings = Granite.Settings.get_default()
 
@@ -37,9 +37,7 @@ class Application(Gtk.Application):
         if not self.window:
             self.window = doomedWindow(application=self)
         self.window.present()
-
         self._run()
-
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
@@ -68,7 +66,7 @@ class Application(Gtk.Application):
 
     def on_quit_action(self, action, param):
         if self.window is not None:
-            self.window.destroy()
+            self.window.on_close_window()
 
     def on_prefers_color_scheme(self, *args):
         prefers_color_scheme = self.granite_settings.get_prefers_color_scheme()

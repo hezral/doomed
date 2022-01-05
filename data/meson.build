@@ -40,19 +40,27 @@ if compile_schemas.found()
   )
 endif
 
-# icon_sizes = ['16', '24', '32', '48', '64', '128']
-# foreach i : icon_sizes
-#     install_data(
-#         join_paths('icons', i + '.svg'),
-#         rename: meson.project_name() + '.svg',
-#         install_dir: join_paths(get_option ('datadir'), 'icons', 'hicolor', i + 'x' + i, 'apps')
-#     )
-#     install_data(
-#         join_paths('icons', i + '.svg'),
-#         rename: meson.project_name() + '.svg',
-#         install_dir: join_paths(get_option ('datadir'), 'icons', 'hicolor', i + 'x' + i + '@2', 'apps')
-#     )
-# endforeach
+icon_sizes = ['16', '24', '32', '48', '64', '128']
+foreach i : icon_sizes
+    install_data(
+        join_paths('icons', i + '.png'),
+        rename: meson.project_name() + '.png',
+        install_dir: join_paths(get_option ('datadir'), 'icons', 'hicolor', i + 'x' + i, 'apps')
+    )
+    install_data(
+        join_paths('icons', i + '.svg'),
+        rename: meson.project_name() + '.svg',
+        install_dir: join_paths(get_option ('datadir'), 'icons', 'hicolor', i + 'x' + i + '@2', 'apps')
+    )
+endforeach
+
+# scalable_dir = join_paths('hicolor', 'scalable', 'apps')
+# install_data(
+#   join_paths('icons', '128.svg'),
+#   rename: meson.project_name() + '.svg',
+#   install_dir: join_paths(get_option('datadir'), 'icons', scalable_dir)
+# )
+
 
 image_sizes = ['0', '1', '2', '3', '4', '5']
 foreach i : image_sizes
@@ -69,3 +77,4 @@ install_data('application.css',
 install_data('unf.mp3',
   install_dir: join_paths(pkgdatadir, project_short_name, 'data')
 )
+

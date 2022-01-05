@@ -68,12 +68,15 @@ class doomedWindow(Handy.ApplicationWindow):
         setattr(geometry, 'base_height', 64)
         setattr(geometry, 'base_width', 64)
         self.set_geometry_hints(None, geometry, Gdk.WindowHints.ASPECT | Gdk.WindowHints.MIN_SIZE | Gdk.WindowHints.BASE_SIZE)
-        # self.props.default_width = 320
-        # self.props.default_height = 320
-        self.set_size_request(32, 32)
         self.set_keep_above(True)
         self.get_style_context().add_class("transparent")
+        
+        self.move(self.app.gio_settings.get_int("pos-x"), self.app.gio_settings.get_int("pos-y"))
+        self.set_size_request(32, 32)
+        # self.set_size_request(self.app.gio_settings.get_int("window-height"), self.app.gio_settings.get_int("window-height"))
+
         self.show_all()
+        self.connect("delete-event", self.on_close_window)
         
 
     def on_hover_enter(self, widget, eventcrossing):
@@ -107,6 +110,16 @@ class doomedWindow(Handy.ApplicationWindow):
         css_provider.load_from_data(bytes(css.encode()))
         self.get_style_context().add_provider(css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
+    def on_close_window(self, window=None, event=None):
+        width, height = self.get_size()
+        x, y = self.get_position()
+
+        self.app.gio_settings.set_int("pos-x", x)
+        self.app.gio_settings.set_int("pos-y", y)
+        self.app.gio_settings.set_int("window-height", height)
+        self.app.gio_settings.set_int("window-width", width)
+        self.destroy()
+        return False
 
 class ImageContainer(Gtk.Grid):
 
@@ -115,12 +128,14 @@ class ImageContainer(Gtk.Grid):
     def __init__(self, filepath, app, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+        self.app = app
         self.type = type
         self.filepath = filepath
         self.props.halign = self.props.valign = Gtk.Align.FILL
         self.props.can_focus = False
         self.props.name = "image-container"
         self.set_size_request(64, 64)
+        # self.set_size_request(self.app.gio_settings.get_int("window-height"), self.app.gio_settings.get_int("window-height"))
         
         self.pixbuf_original = GdkPixbuf.Pixbuf.new_from_file(filepath)
         self.pixbuf_original_height = self.pixbuf_original.props.height

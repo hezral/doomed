@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schemalist gettext-domain="doomed">
-	<schema id="com.github.hezral.doomed" path="/com/github/hezral/doomed/">
-	</schema>
+<schemalist>
+    <schema path="/com/github/hezral/doomed/" id="com.github.hezral.doomed">
+        <key name="pos-x" type="i">
+            <default>360</default>
+            <summary>Horizontal position</summary>
+            <description>Saved horizontal position of main window</description>
+        </key>
+        <key name="pos-y" type="i">
+            <default>640</default>
+            <summary>Vertical position</summary>
+            <description>Saved vertical position of main window</description>
+        </key>
+        <key name="window-width" type="i">
+            <default>48</default>
+            <summary>Window width</summary>
+            <description>Saved width of main window</description>
+        </key>
+        <key name="window-height" type="i">
+            <default>48</default>
+            <summary>Window height</summary>
+            <description>Saved height of main window</description>
+        </key>
+    </schema>
 </schemalist>
